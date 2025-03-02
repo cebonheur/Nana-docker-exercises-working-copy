@@ -1,0 +1,38 @@
+Exercise 0: EXERCISE 0: Clone Git repository and create your own
+
+git clone https://gitlab.com/twn-devops-bootcamp/latest/07-docker/docker-exercises
+
+git remote set-url origin https://github.com/lambda-stack/docker-exercises.git
+
+git push
+
+
+
+EXERCISE 1: Start Mysql container
+
+Step 1. docker run --name mysqltest -p 3306:3306 -e MYSQL_ROOT_PASSWORD=password123# -e MYSQL_DATABASE=mysqltest -d mysql:latest
+
+Step 2. Set the following environment variables on windows through "View advanced system settings"
+DB_USER=root
+DB_PWD=password123#
+DB_SERVER=localhost
+DB_NAME=mysqltest
+
+Step 3.
+gradle build
+
+java -jar ./build/libs/docker-exercises-project-1.0-SNAPSHOT.jar
+
+Step 4
+
+Browsed to localhost:8080 and made some changes. (pictures attached)
+
+
+EXERCISE 2: Start Mysql GUI container
+
+docker run --name phpmyadmin --link mysqltest:db -d -p 8081:80 phpMyAdmin:latest
+
+browse to localhost:8081 and log on with "root" user and the configured password. (Login page and database view are attached.)
+
+
+
