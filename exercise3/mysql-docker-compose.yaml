@@ -5,24 +5,26 @@ services:
 #setting up mysql db 
   mysqltest:
     image: mysql:latest
+    environment:
+      MYSQL_ROOT_PASSWORD: password123#
+      MYSQL_DATABASE: mysqltest
     restart: always
     ports:
       - 3306:3306
     volumes:
       - mysql-data:/var/lib/mysql
-    environment:
-      MYSQL_ROOT_PASSWORD: password123#
-      MYSQL_DATABASE: mysqltest
+
 
 #setting up phpmyadmin UI
   phpmyadmin:
     image: phpmyadmin
+    environment:
+      - PMA_HOST=localhost
     restart: always
     ports:
       - 8081:80
 #Adding env var PMA_HOST to see if it solves the problem of phymyadmin not seeing the mysql server.      
-    environment:
-      - PMA_HOST=localhost
+
 
 volumes:
   mysql-data:
