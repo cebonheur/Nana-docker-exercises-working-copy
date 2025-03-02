@@ -20,6 +20,7 @@ services:
     restart: always
     ports:
       - 8081:80
+#Adding env var PMA_HOST to see if it solves the problem of phymyadmin not seeing the mysql server.      
     environment:
       - PMA_HOST=localhost
 
