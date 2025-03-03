@@ -1,0 +1,5 @@
+Exercise 3
+
+i. Confirm if MySQL and phpMyAdmin will still communicate if I don't explicitly specify expose a port on MySQL container in docker compose.
+
+ii. I made some changes to the yaml file to rename the mysql database and image name or so i think and the phpmyadmin stopped connecting. I think it is related to the PMA_HOST env variale. Investigate this further.

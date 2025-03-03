@@ -1,0 +1,33 @@
+
+
+services:
+
+#setting up mysql db 
+  mysql:
+    image: mysql:latest
+    environment:
+      MYSQL_ROOT_PASSWORD: password123#
+      MYSQL_DATABASE: mysqltest1
+    restart: always
+    ports:
+      - 3306:3306
+    # volumes:
+    #   - mysql-data:/var/lib/mysql
+
+
+#setting up phpmyadmin UI
+  phpmyadmin:
+    image: phpmyadmin
+    environment:
+      PMA_HOST: mysqltest1 
+    restart: always
+    ports:
+      - 8081:80
+#Adding env var PMA_HOST to see if it solves the problem of phymyadmin not seeing the mysql server.
+#It solves the problem but only after setting the value to "mysqltest" which is the name of the database instance created inside mysql.
+#I first set PMA_HOST: localhost and this didn't work. I did this because on the official documentation of phpmyadmin docker page, it states "PMA_HOST - define address/host name of the MySQL server"
+
+
+# volumes:
+#   mysql-data:
+#     driver: local
